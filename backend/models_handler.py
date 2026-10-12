@@ -49,11 +49,17 @@ class NepaliFoodModelManager:
         with open(data_path, "r", encoding="utf-8") as f:
             self.db = json.load(f)
             
-        self.classes: List[str] = self.db.get("classes", [])
         self.dishes: Dict[str, Any] = self.db.get("dishes", {})
         self.models_dir = Path(__file__).parent / "weights"
         self.models_dir.mkdir(exist_ok=True)
         
+        classes_file = self.models_dir / "classes.json"
+        if classes_file.exists():
+            with open(classes_file, "r", encoding="utf-8") as f:
+                self.classes = json.load(f)
+        else:
+            self.classes = sorted(self.db.get("classes", []))
+            
         # In-memory loaded models cache (ONNX / Torch)
         self.loaded_models: Dict[str, Any] = {}
 
