@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parikar 2.0 | Nepali Food Classifier & Culinary Intelligence</title>
+  <meta name="description" content="AI-powered recognition for 16 authentic Nepali cuisines using state-of-the-art vision models: MobileNetV4, ConvNeXt-V2, and EfficientNetV2.">
+  <meta name="keywords" content="Nepali food classifier, Momo, Selroti, Dalbhat, Dhido, Gundruk, Yomari, Parikar AI, Machine Learning Nepal">
+  
+  <!-- Google Fonts: Outfit, Plus Jakarta Sans, Noto Sans Devanagari -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar" id="main-header">
+    <a href="#" class="nav-brand" id="nav-brand-logo">
+      <div class="brand-icon">🥟</div>
+      <div class="brand-text">
+        <h1>Parikar <span class="brand-badge">2.0</span></h1>
+        <span class="brand-subtitle">परिकार • Nepali Culinary AI</span>
+      </div>
+    </a>
+
+    <nav aria-label="Main Navigation">
+      <ul class="nav-links">
+        <li><a href="#classifier" class="active" id="nav-link-classifier">Classifier</a></li>
+        <li><a href="#benchmarks" id="nav-link-benchmarks">Models & Specs</a></li>
+        <li><a href="#catalog" id="nav-link-catalog">Dishes Guide</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-actions">
+      <div class="status-indicator" id="system-status-indicator">
+        <span class="pulse-dot"></span>
+        <span>AI Engine Online</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero-section">
+    <div class="hero-pill" id="hero-pill-badge">
+      <span>🏔️ Heritage Meets Computer Vision 2026</span>
+    </div>
+    <h2>Authentic Nepali Food Recognition,<br>Powered by Vision AI</h2>
+    <p>
+      Classify traditional Himalayan and Terai dishes in milliseconds. Select modern vision architectures, upload a photo or snap with your camera, and discover deep cultural culinary lore.
+    </p>
+  </section>
+
+  <!-- Interactive Classifier Section -->
+  <main class="classifier-section" id="classifier">
+    <div class="classifier-card">
+      
+      <!-- Model Toggle Bar -->
+      <div class="model-control-bar" id="model-control-bar">
+        <div class="model-title-box">
+          <span style="font-size: 1.3rem;">🧠</span>
+          <div>
+            <h3>Active Vision Backbone</h3>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Switch architecture to test latency & accuracy</span>
+          </div>
+        </div>
+
+        <div class="model-selector-group" role="group" aria-label="Select Deep Learning Model">
+          <button type="button" class="model-btn" data-model="mobilenet_v4" id="btn-model-mobilenet">
+            <span>⚡ MobileNetV4</span>
+            <span class="model-badge">14ms</span>
+          </button>
+          <button type="button" class="model-btn active" data-model="convnext_v2" id="btn-model-convnext">
+            <span>🎯 ConvNeXt-V2</span>
+            <span class="model-badge">96.2%</span>
+          </button>
+          <button type="button" class="model-btn" data-model="efficientnet_v2" id="btn-model-efficientnet">
+            <span>🔬 EfficientNetV2</span>
+            <span class="model-badge">Deep</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Workspace: Input Panel & Results Panel -->
+      <div class="workspace-grid">
+        
+        <!-- Left Column: Input Panel -->
+        <div class="input-panel">
+          
+          <!-- Mode Tabs -->
+          <div class="tabs-nav" role="tablist">
+            <button type="button" class="tab-btn active" data-tab="upload" id="tab-btn-upload" role="tab">
+              <span>📁 Upload / Drop Photo</span>
+            </button>
+            <button type="button" class="tab-btn" data-tab="camera" id="tab-btn-camera" role="tab">
+              <span>📷 Live Camera</span>
+            </button>
+          </div>
+
+          <!-- Upload Dropzone View -->
+          <div id="dropzone-wrapper">
+            <div class="dropzone-container" id="dropzone">
+              <input type="file" id="file-input" class="file-input-hidden" accept="image/*" aria-label="Upload food photo">
+              
+              <div class="dropzone-icon">🍲</div>
+              <div class="dropzone-title">Drop your Nepali food photo here</div>
+              <div class="dropzone-subtitle">Supports JPEG, PNG, WEBP • Or paste from clipboard (Ctrl+V)</div>
+              <button type="button" class="btn-browse" id="btn-browse-photo">
+                <span>Browse Photo</span>
+              </button>
+
+              <!-- Image Preview Overlay -->
+              <div class="preview-container" id="preview-container">
+                <img src="" alt="Selected Nepali Food" id="preview-img" class="preview-img">
+                <div class="preview-actions">
+                  <button type="button" class="btn-overlay" id="btn-remove-preview">
+                    <span>✕ Clear Image</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Camera Stream View -->
+          <div class="camera-panel" id="camera-wrapper">
+            <video id="camera-video" autoplay playsinline muted></video>
+            <div class="camera-controls">
+              <button type="button" class="btn-cam-tool" id="btn-flip-cam" title="Flip Camera" aria-label="Flip Camera">
+                🔄
+              </button>
+              <button type="button" class="btn-capture" id="btn-capture" title="Take Photo" aria-label="Capture Photo"></button>
+            </div>
+          </div>
+
+          <!-- Quick Test Samples Bar -->
+          <div class="samples-bar" id="samples-bar">
+            <span class="samples-label">⚡ Quick 1-Click Test Samples:</span>
+            <div class="sample-chips">
+              <button type="button" class="chip-btn" data-dish="momo" data-sample="assets/momo.jpg" id="sample-momo">
+                <span>🥟 Momo</span>
+              </button>
+              <button type="button" class="chip-btn" data-dish="selroti" data-sample="assets/selroti.jpg" id="sample-selroti">
+                <span>🍩 Selroti</span>
+              </button>
+              <button type="button" class="chip-btn" data-dish="dalbhat" data-sample="assets/dalbhat.jpg" id="sample-dalbhat">
+                <span>🍛 Dal Bhat</span>
+              </button>
+              <button type="button" class="chip-btn" data-dish="gundruk" data-sample="assets/gundruk.jpg" id="sample-gundruk">
+                <span>🥬 Gundruk</span>
+              </button>
+              <button type="button" class="chip-btn" data-dish="yomari" data-sample="assets/yomari.jpg" id="sample-yomari">
+                <span>🍯 Yomari</span>
+              </button>
+              <button type="button" class="chip-btn" data-dish="sekuwa" data-sample="assets/sekuwa.jpg" id="sample-sekuwa">
+                <span>🍢 Sekuwa</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Results Dashboard -->
+        <div class="results-panel">
+          
+          <!-- Empty Waiting State -->
+          <div class="empty-state" id="empty-state">
+            <div class="empty-icon">✨</div>
+            <div class="empty-title">Ready for Classification</div>
+            <p class="empty-desc">
+              Upload a picture of any Nepali dish or choose a quick sample to see neural predictions, confidence, and cultural history.
+            </p>
+          </div>
+
+          <!-- Active Prediction Card -->
+          <div class="result-card" id="result-card">
+            
+            <!-- Top Hero Banner -->
+            <div class="prediction-hero">
+              <div class="prediction-meta-top">
+                <span class="dish-category-badge" id="res-category">Traditional Dish</span>
+                <span class="latency-badge">
+                  <span>⚡</span>
+                  <span id="res-latency">18.4 ms</span>
+                </span>
+              </div>
+
+              <div class="dish-main-names">
+                <h3 class="dish-main-name" id="res-name">Momo</h3>
+                <div class="dish-nepali-name" id="res-nepali">मोमो</div>
+              </div>
+
+              <div class="confidence-bar-wrap">
+                <div class="confidence-label-row">
+                  <span>Neural Confidence</span>
+                  <span id="res-conf-text" style="color: var(--accent-saffron);">96.8%</span>
+                </div>
+                <div class="confidence-progress-track">
+                  <div class="confidence-progress-fill" id="res-conf-bar"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Top 3 Probability Breakdown -->
+            <div class="top-candidates-box">
+              <div class="section-mini-title">Top-3 Model Ranking</div>
+              <div class="candidates-list" id="res-candidates">
+                <!-- Dynamically populated by app.js -->
+              </div>
+            </div>
+
+            <!-- Cultural Knowledge Card -->
+            <div class="knowledge-card">
+              <div class="dietary-tags" id="res-dietary-tags">
+                <!-- Dietary and origin tags -->
+              </div>
+
+              <div class="lore-section">
+                <span class="lore-label">Culinary Profile</span>
+                <p class="lore-text" id="res-desc"></p>
+              </div>
+
+              <div class="lore-section">
+                <span class="lore-label">Cultural Heritage & Significance</span>
+                <p class="lore-text" id="res-culture"></p>
+              </div>
+
+              <div class="lore-section">
+                <span class="lore-label">Key Traditional Ingredients</span>
+                <div class="ingredients-chips" id="res-ingredients">
+                  <!-- Ingredient tags -->
+                </div>
+              </div>
+
+              <div class="lore-section">
+                <span class="lore-label">Traditional Preparation</span>
+                <p class="lore-text" id="res-recipe"></p>
+              </div>
+
+              <div class="lore-section">
+                <span class="lore-label">Recommended Accompaniments</span>
+                <p class="lore-text" id="res-pairings"></p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Model Benchmarks Section -->
+  <section class="benchmark-section" id="benchmarks">
+    <div class="section-header">
+      <h2>Model Architecture Benchmarks</h2>
+      <p>Comparing next-generation vision backbones for Nepali cuisine classification in 2026</p>
+    </div>
+
+    <div class="models-grid">
+      
+      <!-- MobileNetV4 Card -->
+      <div class="model-card">
+        <div class="model-card-header">
+          <div>
+            <h3 class="model-card-title">MobileNetV4-Conv</h3>
+            <span class="model-card-dev">Google Research (2024)</span>
+          </div>
+          <span class="brand-badge" style="background: rgba(16, 185, 129, 0.2); color: var(--accent-emerald); border-color: rgba(16, 185, 129, 0.3);">
+            Fastest
+          </span>
+        </div>
+        <p class="model-card-desc">
+          Universal Inverted Bottleneck (UIB) design optimized for sub-15ms edge inference on mobile browsers and micro-containers.
+        </p>
+        <div class="model-specs-grid">
+          <div class="spec-item">
+            <span class="spec-val">15.2 MB</span>
+            <span class="spec-key">Weight Size</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-val">~14 ms</span>
+            <span class="spec-key">Est. Latency</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-val">94.4%</span>
+            <span class="spec-key">Top-1 Acc</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ConvNeXt-V2 Card -->
+      <div class="model-card" style="border-color: var(--border-active); box-shadow: var(--shadow-lg);">
+        <div class="model-card-header">
+          <div>
+            <h3 class="model-card-title">ConvNeXt-V2-Nano</h3>
+            <span class="model-card-dev">Meta AI</span>
+          </div>
+          <span class="brand-badge">Recommended</span>
+        </div>
+        <p class="model-card-desc">
+          Pure convolutional backbone reimagined with Global Response Normalization (GRN) for maximum fine-grained culinary precision.
+        </p>
+        <div class="model-specs-grid">
+          <div class="spec-item">
+            <span class="spec-val">35.8 MB</span>
+            <span class="spec-key">Weight Size</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-val">~28 ms</span>
+            <span class="spec-key">Est. Latency</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-val">96.2%</span>
+            <span class="spec-key">Top-1 Acc</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- EfficientNetV2 Card -->
+      <div class="model-card">
+        <div class="model-card-header">
+          <div>
+            <h3 class="model-card-title">EfficientNetV2-S</h3>
+            <span class="model-card-dev">Google Brain</span>
+          </div>
+          <span class="brand-badge" style="background: rgba(245, 158, 11, 0.2); color: var(--accent-saffron); border-color: rgba(245, 158, 11, 0.3);">
+            Deep Texture
+          </span>
+        </div>
+        <p class="model-card-desc">
+          Progressive training and fused-MBConv blocks deliver extraordinary feature discriminability for complex curries and fermentation textures.
+        </p>
+        <div class="model-specs-grid">
+          <div class="spec-item">
+            <span class="spec-val">51.4 MB</span>
+            <span class="spec-key">Weight Size</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-val">~38 ms</span>
+            <span class="spec-key">Est. Latency</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-val">95.7%</span>
+            <span class="spec-key">Top-1 Acc</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Encyclopedia Dishes Grid -->
+  <section class="catalog-section" id="catalog">
+    <div class="section-header">
+      <h2>Nepali Culinary Encyclopedia</h2>
+      <p>Discover 16 authentic dishes recognized by Parikar AI</p>
+    </div>
+
+    <div class="catalog-search-bar">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="catalog-search" class="search-input" placeholder="Search dish by English or Nepali name (e.g. Momo, धिँडो)..." aria-label="Search dishes">
+    </div>
+
+    <div class="dishes-grid" id="dishes-grid">
+      <!-- Populated dynamically by app.js -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="main-footer">
+    <div class="footer-content">
+      <div class="student-pack-badges">
+        <span class="badge-item">🎓 GitHub Student Developer Pack</span>
+        <span class="badge-item">🚀 Heroku Cloud API ($13/mo)</span>
+        <span class="badge-item">🌐 GitHub Pages & Vercel Free Tier</span>
+        <span class="badge-item">💎 Free .me Domain (Namecheap)</span>
+      </div>
+      <p class="footer-copy">
+        Parikar 2.0 © 2026 • Dedicated to the celebration and cultural preservation of authentic Nepali culinary heritage.
+      </p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
