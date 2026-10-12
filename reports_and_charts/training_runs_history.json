@@ -1,0 +1,41 @@
+[
+  {
+    "session_number": 1,
+    "folder_name": "session_1",
+    "title": "1st Training Run • Base 10,000 Dataset",
+    "notes": "Initial baseline training across MobileNetV4, ConvNeXt-V2, and EfficientNet-B0 on 10,000 balanced Nepali food images.",
+    "timestamp": "2026-10-12 15:50:52",
+    "models": {
+      "mobilenet_v4": {
+        "display_name": "MobileNetV4-Conv",
+        "timm_name": "mobilenetv4_conv_small.e1200_r224_in1k",
+        "best_val_acc": 87.0,
+        "final_train_acc": 99.98,
+        "inference_latency_ms": 5.34,
+        "onnx_size_mb": 9.53,
+        "epochs": 12,
+        "training_time_sec": 502.9
+      },
+      "convnext_v2": {
+        "display_name": "ConvNeXt-V2-Nano",
+        "timm_name": "convnextv2_nano.fcmae_ft_in22k_in1k",
+        "best_val_acc": 90.0,
+        "final_train_acc": 99.94,
+        "inference_latency_ms": 7.0,
+        "onnx_size_mb": 57.3,
+        "epochs": 10,
+        "training_time_sec": 1052.6
+      },
+      "efficientnet_b0": {
+        "display_name": "EfficientNet-B0",
+        "timm_name": "efficientnet_b0.ra_in1k",
+        "best_val_acc": 88.3,
+        "final_train_acc": 99.98,
+        "inference_latency_ms": 10.73,
+        "onnx_size_mb": 15.31,
+        "epochs": 12,
+        "training_time_sec": 1040.0
+      }
+    }
+  }
+]

@@ -424,7 +424,18 @@ def main():
         except Exception as chart_err:
             print(f"Warning: Chart generation skipped ({chart_err})")
 
-    print("\nAll model training, ONNX exports, and report documentation completed successfully!")
+    # Record this retraining run as a numbered session in reports_and_charts (Session 1, Session 2, ...)
+    try:
+        from scripts.training_session_manager import record_training_session
+        record_training_session(
+            metrics_data=all_results,
+            session_title=f"Retraining Run ({', '.join(models_to_train)})",
+            session_notes=f"Trained models: {', '.join(models_to_train)} with epochs={args.epochs}, batch={args.batch_size}, lr={args.lr}."
+        )
+    except Exception as sess_err:
+        print(f"Notice: Session logger ({sess_err})")
+
+    print("\nAll model training, ONNX exports, session logging, and visualizations completed successfully!")
 
 if __name__ == "__main__":
     main()
