@@ -80,29 +80,42 @@ CLASSES_QUERIES = {
 
 def clean_and_validate_images(target_dir: Path, min_dim: int = 180) -> int:
     """Validates downloaded images, converts to RGB JPEG, removes corrupted files."""
+    files = [f for f in target_dir.glob("*.*") if f.is_file() and not f.name.startswith("_")]
+    temp_clean = target_dir / "_clean_temp"
+    temp_clean.mkdir(exist_ok=True)
+
     valid_count = 0
-    for img_path in list(target_dir.glob("*.*")):
+    for img_path in files:
         try:
             with Image.open(img_path) as img:
                 img.verify()
             
             with Image.open(img_path) as img:
                 if img.width < min_dim or img.height < min_dim:
-                    img_path.unlink()
+                    img_path.unlink(missing_ok=True)
                     continue
-                # Re-save as clean RGB JPEG
                 rgb = img.convert("RGB")
-                clean_path = target_dir / f"{target_dir.name}_{valid_count:04d}.jpg"
-                rgb.save(clean_path, "JPEG", quality=90)
-                if clean_path != img_path and img_path.exists():
-                    img_path.unlink()
+                clean_name = f"{target_dir.name}_{valid_count:04d}.jpg"
+                rgb.save(temp_clean / clean_name, "JPEG", quality=90)
                 valid_count += 1
         except Exception:
-            if img_path.exists():
-                try:
-                    img_path.unlink()
-                except Exception:
-                    pass
+            pass
+        
+        try:
+            img_path.unlink(missing_ok=True)
+        except Exception:
+            pass
+
+    # Move all cleaned images back to target_dir
+    for clean_file in temp_clean.glob("*.jpg"):
+        dest_file = target_dir / clean_file.name
+        if dest_file.exists():
+            dest_file.unlink(missing_ok=True)
+        shutil.move(str(clean_file), str(dest_file))
+
+    if temp_clean.exists():
+        shutil.rmtree(temp_clean, ignore_errors=True)
+
     return valid_count
 
 def scrape_dataset(

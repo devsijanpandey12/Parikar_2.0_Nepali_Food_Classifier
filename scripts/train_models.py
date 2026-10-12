@@ -18,8 +18,8 @@ import timm
 # Model architecture catalog
 ARCHITECTURES = {
     "mobilenet_v4": "mobilenetv4_conv_small.e1200_r224_in1k",
-    "convnext_v2": "convnextv2_nano.fcmae_ft_in22k_in1k_224",
-    "efficientnet_v2": "efficientnet_b0.ra_in1k"
+    "convnext_v2": "convnextv2_nano.fcmae_ft_in22k_in1k",
+    "efficientnet_b0": "efficientnet_b0.ra_in1k"
 }
 
 def get_transforms(img_size=224):

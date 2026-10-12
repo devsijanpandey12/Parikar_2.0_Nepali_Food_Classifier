@@ -11,7 +11,7 @@ This project upgrades the original research and mobile app into a modern, 24/7 c
 * **3 Modern Vision Backbones (2024–2026):**
   * `MobileNetV4-Conv`: Ultra-fast sub-15ms edge inference.
   * `ConvNeXt-V2-Nano`: Pure CNN with modern Vision Transformer design principles.
-  * `EfficientNetV2-S`: Deep progressive training for fine-grained food textures.
+  * `EfficientNet-B0`: Scalable compound neural architecture for balanced feature extraction.
 * **Dual Input Modes:**
   * **Drag & Drop / File Upload:** Fast photo input with live preview.
   * **Realtime Camera / Webcam:** In-browser video stream with mobile front/back camera flipping.

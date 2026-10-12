@@ -29,15 +29,15 @@ MODELS_METADATA = {
         "val_top1_acc": "96.2%",
         "description": "State-of-the-art pure convolutional architecture redesigned with Vision Transformer principles and Global Response Normalization (GRN)."
     },
-    "efficientnet_v2": {
-        "id": "efficientnet_v2",
-        "name": "EfficientNetV2-S",
-        "developer": "Google Research",
-        "tag": "Deep Feature / Fine-Grained",
-        "param_size_mb": 51.4,
-        "latency_est_ms": 38,
-        "val_top1_acc": "95.7%",
-        "description": "Combines training-aware neural architecture search and progressive learning for fine-grained culinary texture recognition."
+    "efficientnet_b0": {
+        "id": "efficientnet_b0",
+        "name": "EfficientNet-B0",
+        "developer": "Google Brain",
+        "tag": "Compound Scaling / Light",
+        "param_size_mb": 21.2,
+        "latency_est_ms": 22,
+        "val_top1_acc": "95.1%",
+        "description": "Balanced convolutional architecture with compound scaling across depth, width, and resolution for reliable fine-grained food recognition."
     }
 }
 

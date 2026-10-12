@@ -40,6 +40,7 @@ Thumbs.db
 
 # Heavy training datasets & raw checkpoints
 dataset/
+data/
 *.pth
 *.pt
 *.tar

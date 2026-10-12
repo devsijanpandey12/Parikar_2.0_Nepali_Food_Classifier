@@ -514,7 +514,7 @@ function runClientSidePrediction(file) {
   const modelSpecs = {
     'mobilenet_v4': { name: 'MobileNetV4-Conv', latency: 13.5 },
     'convnext_v2': { name: 'ConvNeXt-V2-Nano', latency: 26.8 },
-    'efficientnet_v2': { name: 'EfficientNetV2-S', latency: 36.2 }
+    'efficientnet_b0': { name: 'EfficientNet-B0', latency: 22.4 }
   };
   const spec = modelSpecs[state.currentModel] || modelSpecs['convnext_v2'];
 
