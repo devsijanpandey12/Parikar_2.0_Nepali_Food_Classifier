@@ -1,3 +1,4 @@
+import json
 import os
 from pathlib import Path
 from fastapi import FastAPI, File, UploadFile, Form, HTTPException
@@ -25,7 +26,9 @@ app.add_middleware(
 manager = NepaliFoodModelManager()
 
 # Paths
-FRONTEND_DIR = Path(__file__).parent.parent / "frontend"
+ROOT_DIR = Path(__file__).resolve().parent.parent
+FRONTEND_DIR = ROOT_DIR / "frontend"
+REPORTS_DIR = ROOT_DIR / "reports_and_charts"
 
 @app.get("/health")
 def health_check():
@@ -60,6 +63,24 @@ def get_dish(dish_id: str):
         raise HTTPException(status_code=404, detail=f"Dish '{dish_id}' not found.")
     return dish
 
+@app.get("/api/benchmarks")
+def get_benchmarks():
+    """Returns live empirical training metrics and chart image links for all models."""
+    metrics_file = ROOT_DIR / "docs" / "training_metrics.json"
+    if metrics_file.exists():
+        try:
+            with open(metrics_file, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            return {
+                "status": "success",
+                "models": data,
+                "chart_url": "/reports/comparisons/model_comparison_latest.png",
+                "dashboard_url": "/reports/comparisons/benchmark_dashboard.html"
+            }
+        except Exception as e:
+            return {"status": "error", "message": str(e)}
+    return {"status": "empty", "models": {}}
+
 @app.post("/api/predict")
 async def predict_food(
     image: UploadFile = File(...),
@@ -78,6 +99,11 @@ async def predict_food(
         return JSONResponse(content=result)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Prediction error: {str(e)}")
+
+# Serve static reports & charts if directory exists
+REPORTS_DIR = ROOT_DIR / "reports_and_charts"
+if REPORTS_DIR.exists():
+    app.mount("/reports", StaticFiles(directory=str(REPORTS_DIR)), name="reports")
 
 # Serve static frontend files if directory exists.
 # index.html references style.css / app.js / assets/* with root-relative paths, so the

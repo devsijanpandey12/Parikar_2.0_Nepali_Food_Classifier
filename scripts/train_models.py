@@ -415,6 +415,15 @@ def main():
             json.dump(all_results, f, indent=2)
         update_training_report(all_results)
 
+        # Automatically update persistent charts & visual benchmarks in reports_and_charts/
+        try:
+            from scripts.visualize_benchmarks import plot_single_model_training_curves, generate_comparative_charts
+            if "history" in result:
+                plot_single_model_training_curves(m_key, result["history"])
+            generate_comparative_charts(all_results)
+        except Exception as chart_err:
+            print(f"Warning: Chart generation skipped ({chart_err})")
+
     print("\nAll model training, ONNX exports, and report documentation completed successfully!")
 
 if __name__ == "__main__":

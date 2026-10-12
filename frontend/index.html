@@ -318,24 +318,29 @@
             <h3 class="model-card-title">MobileNetV4-Conv</h3>
             <span class="model-card-dev">Google Research (2024)</span>
           </div>
-          <span class="brand-badge is-emerald">Fastest</span>
+          <span class="brand-badge is-emerald">⚡ 5.34 ms (Fastest)</span>
         </div>
         <p class="model-card-desc">
-          Universal Inverted Bottleneck (UIB) design optimized for sub-15ms edge inference on mobile browsers and micro-containers.
+          Universal Inverted Bottleneck (UIB) design optimized for sub-6ms edge inference on mobile browsers and micro-containers.
         </p>
         <div class="model-specs-grid">
           <div class="spec-item">
-            <span class="spec-val">15.2 MB</span>
-            <span class="spec-key">Weight Size</span>
+            <span class="spec-val">9.53 MB</span>
+            <span class="spec-key">ONNX Size</span>
           </div>
           <div class="spec-item">
-            <span class="spec-val">~14 ms</span>
-            <span class="spec-key">Est. Latency</span>
+            <span class="spec-val">5.34 ms</span>
+            <span class="spec-key">GPU Latency</span>
           </div>
           <div class="spec-item">
-            <span class="spec-val">94.4%</span>
-            <span class="spec-key">Top-1 Acc</span>
+            <span class="spec-val" style="color:#10b981;">87.00%</span>
+            <span class="spec-key">Val Accuracy</span>
           </div>
+        </div>
+        <div style="margin-top:14px; text-align:center;">
+          <a href="/reports/mobilenet_v4/mobilenet_v4_latest_curves.png" target="_blank" class="btn-model-chart" style="font-size:0.78rem; color:var(--text-secondary); text-decoration:none; display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.04); padding:6px 12px; border-radius:6px; border:1px solid rgba(255,255,255,0.08);">
+            📈 View Training Loss Curve
+          </a>
         </div>
       </div>
 
@@ -346,24 +351,29 @@
             <h3 class="model-card-title">ConvNeXt-V2-Nano</h3>
             <span class="model-card-dev">Meta AI</span>
           </div>
-          <span class="brand-badge">Recommended</span>
+          <span class="brand-badge" style="background:linear-gradient(135deg, #f59e0b, #ec4899); color:#fff;">🏆 90.00% (Rank #1)</span>
         </div>
         <p class="model-card-desc">
           Pure convolutional backbone reimagined with Global Response Normalization (GRN) for maximum fine-grained culinary precision.
         </p>
         <div class="model-specs-grid">
           <div class="spec-item">
-            <span class="spec-val">35.8 MB</span>
-            <span class="spec-key">Weight Size</span>
+            <span class="spec-val">57.30 MB</span>
+            <span class="spec-key">ONNX Size</span>
           </div>
           <div class="spec-item">
-            <span class="spec-val">~28 ms</span>
-            <span class="spec-key">Est. Latency</span>
+            <span class="spec-val">7.00 ms</span>
+            <span class="spec-key">GPU Latency</span>
           </div>
           <div class="spec-item">
-            <span class="spec-val">96.2%</span>
-            <span class="spec-key">Top-1 Acc</span>
+            <span class="spec-val" style="color:#fbbf24;">90.00%</span>
+            <span class="spec-key">Val Accuracy</span>
           </div>
+        </div>
+        <div style="margin-top:14px; text-align:center;">
+          <a href="/reports/convnext_v2/convnext_v2_latest_curves.png" target="_blank" class="btn-model-chart" style="font-size:0.78rem; color:var(--text-secondary); text-decoration:none; display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.04); padding:6px 12px; border-radius:6px; border:1px solid rgba(255,255,255,0.08);">
+            📈 View Training Loss Curve
+          </a>
         </div>
       </div>
 
@@ -374,27 +384,52 @@
             <h3 class="model-card-title">EfficientNet-B0</h3>
             <span class="model-card-dev">Google Brain</span>
           </div>
-          <span class="brand-badge is-saffron">Compound Scaling</span>
+          <span class="brand-badge is-saffron">✨ 88.30% Balanced</span>
         </div>
         <p class="model-card-desc">
-          Balanced convolutional network utilizing principled compound coefficient scaling across depth, width, and resolution for reliable feature extraction.
+          Balanced convolutional network utilizing principled compound coefficient scaling across depth, width, and resolution.
         </p>
         <div class="model-specs-grid">
           <div class="spec-item">
-            <span class="spec-val">21.2 MB</span>
-            <span class="spec-key">Weight Size</span>
+            <span class="spec-val">15.31 MB</span>
+            <span class="spec-key">ONNX Size</span>
           </div>
           <div class="spec-item">
-            <span class="spec-val">~22 ms</span>
-            <span class="spec-key">Est. Latency</span>
+            <span class="spec-val">10.73 ms</span>
+            <span class="spec-key">GPU Latency</span>
           </div>
           <div class="spec-item">
-            <span class="spec-val">95.1%</span>
-            <span class="spec-key">Top-1 Acc</span>
+            <span class="spec-val" style="color:#f59e0b;">88.30%</span>
+            <span class="spec-key">Val Accuracy</span>
           </div>
+        </div>
+        <div style="margin-top:14px; text-align:center;">
+          <a href="/reports/efficientnet_b0/efficientnet_b0_latest_curves.png" target="_blank" class="btn-model-chart" style="font-size:0.78rem; color:var(--text-secondary); text-decoration:none; display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.04); padding:6px 12px; border-radius:6px; border:1px solid rgba(255,255,255,0.08);">
+            📈 View Training Loss Curve
+          </a>
         </div>
       </div>
 
+    </div>
+
+    <!-- Visual Benchmarks Chart Viewer & Trade-Off Analysis -->
+    <div class="benchmark-chart-card reveal" style="margin-top: 36px; background: var(--bg-card); border: 1px solid var(--border-glass); border-radius: var(--radius-xl); padding: 28px; box-shadow: var(--shadow-glass);">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; margin-bottom: 20px;">
+        <div>
+          <span class="section-eyebrow" style="margin-bottom:4px;">Empirical Visualizations</span>
+          <h3 style="margin:0; font-size:1.35rem; font-weight:800; color:var(--text-primary);">Comparative Performance &amp; Trade-off Charts</h3>
+          <p style="margin:4px 0 0; color:var(--text-muted); font-size:0.88rem;">Empirically measured across 10,000 augmented Nepali food samples on RTX 4050 GPU.</p>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <a href="/reports/comparisons/benchmark_dashboard.html" target="_blank" class="btn-browse" style="padding:8px 16px; font-size:0.85rem; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+            <span>🌐 Open Interactive Dashboard</span>
+          </a>
+        </div>
+      </div>
+
+      <div style="text-align:center; background:rgba(0,0,0,0.3); border-radius:12px; padding:12px; border:1px solid rgba(255,255,255,0.05); overflow:hidden;">
+        <img src="/reports/comparisons/model_comparison_latest.png" alt="Parikar 2.0 Model Comparison Charts" style="max-width:100%; height:auto; border-radius:8px; display:block; margin:0 auto;" id="benchmark-chart-img" loading="lazy">
+      </div>
     </div>
   </section>
 
