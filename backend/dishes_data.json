@@ -3,19 +3,13 @@
     "momo",
     "selroti",
     "dalbhat",
-    "dhido",
-    "gundruk",
-    "yomari",
     "panipuri",
-    "sekuwa",
-    "juju_dhau",
     "samosa",
-    "kwati",
-    "bara",
-    "chatpate",
-    "chow_mein",
-    "thukpa",
-    "chiya"
+    "chiya",
+    "pakauda",
+    "jeri",
+    "yomari",
+    "chatpate"
   ],
   "dishes": {
     "momo": {
@@ -57,45 +51,6 @@
       "recipe_summary": "Lentils are boiled and tempered (chhonk) with ghee, garlic, and jimbu. Accompanied by pan-sautéed vegetable curry, fresh greens (Saag), and tomato chutney.",
       "suggested_accompaniments": "Fermented radish pickle (Mula ko Achar), fried sun-dried papad, and fresh sliced lemons."
     },
-    "dhido": {
-      "id": "dhido",
-      "name": "Dhido",
-      "nepali_name": "धिँडो",
-      "category": "Traditional Pahadi / Mountain Staple",
-      "origin": "Hilly and mountainous regions of Nepal",
-      "dietary": "Vegetarian / Vegan / Gluten-Free",
-      "description": "A dense, highly nutritious hot porridge-like mash prepared by continuously stirring buckwheat, millet (kodo), or corn flour in boiling water.",
-      "cultural_significance": "A heritage food deeply rooted in rural agrarian life, praised for sustained stamina and clean energy.",
-      "key_ingredients": ["Millet (kodo) flour or buckwheat (phapar) flour", "Water", "A dollop of ghee"],
-      "recipe_summary": "Water is brought to a boil in a thick iron cauldron (Tawo/Karahi), flour is gradually rained in while vigorously whipped with a wooden paddle (Dabiro) until glossy and pliable.",
-      "suggested_accompaniments": "Eaten without chewing by dipping small morsels directly into Gundruk soup, rich local chicken gravy, or fresh curd."
-    },
-    "gundruk": {
-      "id": "gundruk",
-      "name": "Gundruk",
-      "nepali_name": "गुन्द्रुक",
-      "category": "Fermented Vegetable / Heritage Specialty",
-      "origin": "Indigenous Nepali culinary preservation technique",
-      "dietary": "Vegan / Gluten-Free",
-      "description": "Sun-dried fermented leafy green vegetables (mustard, radish, or cauliflower leaves) renowned for their appetizing tang and deep umami richness.",
-      "cultural_significance": "Considered the national vegetable dish of Nepal, reflecting ancestral wisdom in seasonal food preservation.",
-      "key_ingredients": ["Mustard or rayo leaves", "Sun-dried fermented greens", "Mustard oil", "Fenugreek seeds (Methi)", "Green chilies", "Garlic"],
-      "recipe_summary": "Leaves are wilted, packed into airtight clay pots for microbial fermentation, sun-dried, and subsequently cooked into a warm spiced soup with potatoes and soybeans (Bhatmas).",
-      "suggested_accompaniments": "Served as Gundruk Jhol with steaming Dhido or hot boiled rice."
-    },
-    "yomari": {
-      "id": "yomari",
-      "name": "Yomari",
-      "nepali_name": "योमरी",
-      "category": "Festive Delicacy / Sweet Dumpling",
-      "origin": "Newar community of Kathmandu Valley",
-      "dietary": "Vegetarian",
-      "description": "Fig-shaped steamed rice flour dumpling filled with sweet molten molasses (Chaku) and sesame seeds, or savory lentil paste.",
-      "cultural_significance": "Centerpiece of Yomari Punhi, celebrating the post-harvest full moon and bestowing prosperity and blessings upon families.",
-      "key_ingredients": ["Taichin rice flour", "Chaku (concentrated jaggery molasses)", "Roasted sesame seeds", "Coconut shreds"],
-      "recipe_summary": "Warm dough is sculpted with fingers into pointed conical figures, hollowed out, packed with warm chaku-sesame filling, pinched closed, and steamed.",
-      "suggested_accompaniments": "Eaten warm when the inner chaku is delightfully molten."
-    },
     "panipuri": {
       "id": "panipuri",
       "name": "Panipuri",
@@ -108,32 +63,6 @@
       "key_ingredients": ["Semolina/wheat puris", "Boiled potatoes", "Black chickpeas", "Tamarind pulp", "Mint leaves", "Black salt", "Green chilies"],
       "recipe_summary": "Hollow sphere is lightly crushed on top, spooned with seasoned potato filling, immersed in zesty herbal water, and eaten whole in one bite.",
       "suggested_accompaniments": "Spicy sweet-sour tamarind saunth chutney."
-    },
-    "sekuwa": {
-      "id": "sekuwa",
-      "name": "Sekuwa",
-      "nepali_name": "सेकुवा",
-      "category": "Charcoal Grilled Meat",
-      "origin": "Eastern Nepal (Dharan/Morang) & Pan-Nepal",
-      "dietary": "Non-Vegetarian",
-      "description": "Tender chunks of meat marinated in pungent mustard oil, garlic, raw spices, and slow-roasted over fragrant natural wood charcoal coals.",
-      "cultural_significance": "Quintessential Nepali barbecue, famous for lively evening gatherings and celebratory celebrations.",
-      "key_ingredients": ["Meat (buff, goat, pork, or chicken)", "Raw mustard oil", "Roasted cumin & coriander", "Ginger-garlic paste", "Chili flakes", "Timur"],
-      "recipe_summary": "Meat is rubbed thoroughly with aromatic spice paste, skewered on iron rods, and rotated over glowing charcoal until smoky and lightly charred.",
-      "suggested_accompaniments": "Served with beaten rice (Baji/Chiura), pickled radishes, and toasted soybeans."
-    },
-    "juju_dhau": {
-      "id": "juju_dhau",
-      "name": "Juju Dhau",
-      "nepali_name": "जुजु धौ",
-      "category": "Traditional Sweet Curd / Dessert",
-      "origin": "Bhaktapur, Kathmandu Valley",
-      "dietary": "Vegetarian",
-      "description": "Rich, velvety sweet yogurt set in traditional porous unglazed terracotta clay pots, revered as the 'King of Curd'.",
-      "cultural_significance": "A heritage sweet crafted for centuries in historic Bhaktapur, consumed at celebrations, festivals, and sacred rites.",
-      "key_ingredients": ["Full-cream buffalo milk", "Honey or jaggery", "Cardamom", "Cloves", "Active starter cultures"],
-      "recipe_summary": "Buffalo milk is boiled and reduced until dense, naturally sweetened, seasoned with gentle aromatics, poured into breathable earthenware pots, and insulated in rice husks to set.",
-      "suggested_accompaniments": "Enjoyed chilled as a celebratory dessert or after a traditional Newari feast."
     },
     "samosa": {
       "id": "samosa",
@@ -148,31 +77,57 @@
       "recipe_summary": "Crisp flour pastry is folded into neat cones, stuffed with spiced potato mixture, sealed, and deep-fried at gentle temperatures until golden amber.",
       "suggested_accompaniments": "Hot chana tarkari (chickpea gravy) with sweet-tangy tamarind chutney."
     },
-    "kwati": {
-      "id": "kwati",
-      "name": "Kwati",
-      "nepali_name": "क्वाँटी",
-      "category": "Sprouted Bean Soup",
-      "origin": "Newar community and broad Nepali tradition",
-      "dietary": "Vegan / High Protein",
-      "description": "Hearty, nourishing thick stew brewed from nine distinct varieties of sprouted beans, simmered with warming spices, lovage seeds, and ginger.",
-      "cultural_significance": "Sacred culinary tradition prepared during the festival of Janai Purnima (Gunhu Punhi) for inner strength and seasonal vitality.",
-      "key_ingredients": ["Nine sprouted beans (black gram, chickpea, field pea, soybean, mung, cowpea, kidney bean, faba bean, gram)", "Ajwain (Jowano)", "Ginger", "Turmeric"],
-      "recipe_summary": "Sprouted beans are tempered in mustard oil with aromatic jowano, sautéed with aromatics, and pressure cooked into a thick, aromatic therapeutic broth.",
-      "suggested_accompaniments": "Paired with warm steamed rice or flaky flatbreads."
+    "chiya": {
+      "id": "chiya",
+      "name": "Masala Chiya",
+      "nepali_name": "मसाला चिया",
+      "category": "Traditional Beverage",
+      "origin": "Pan-Nepal",
+      "dietary": "Vegetarian",
+      "description": "Rich, aromatic spiced milk tea brewed with full-bodied local CTC tea leaves (Ilam), fresh milk, and fragrant whole spices.",
+      "cultural_significance": "The heart of Nepali hospitality and social culture; no guest enters a home without being greeted with a steaming glass of Chiya.",
+      "key_ingredients": ["Nepali orthodox/CTC black tea", "Whole milk", "Water", "Crushed green cardamom", "Cinnamon bark", "Fresh ginger", "Cloves", "Sugar"],
+      "recipe_summary": "Water and milk are brought to a roll with crushed spices and ginger, black tea is added and slow-boiled until deep amber, strained into glasses.",
+      "suggested_accompaniments": "Paired with morning Selroti, bakery biscuits, or Malpuwa."
     },
-    "bara": {
-      "id": "bara",
-      "name": "Bara (Wo)",
-      "nepali_name": "बारा (वः)",
-      "category": "Traditional Savory Lentil Patties",
-      "origin": "Newar cuisine of Kathmandu Valley",
-      "dietary": "Vegetarian (Can be topped with egg or minced meat)",
-      "description": "Nutritious golden lentil patties made from ground black gram or green mung bean paste, lightly pan-fried in mustard oil on a concave griddle.",
-      "cultural_significance": "Integral component of auspicious ritual feasts (Sagan) symbolizing goodwill, fortune, and celebration.",
-      "key_ingredients": ["Split black lentils (Maas ko dal)", "Ginger paste", "Asafoetida (Hing)", "Salt", "Mustard oil"],
-      "recipe_summary": "Soaked lentils are ground into a smooth thick paste, whipped until airy, spooned onto an oiled griddle, flattened into round discs, and shallow-fried till crispy on edges.",
-      "suggested_accompaniments": "Served with spicy potato gravy (Aloo ko Jhol) or freshly cracked egg topping."
+    "pakauda": {
+      "id": "pakauda",
+      "name": "Pakauda",
+      "nepali_name": "पकौडा",
+      "category": "Street Food / Fried Snack",
+      "origin": "Pan-Nepal roadside tea shops & household rainy-day tradition",
+      "dietary": "Vegetarian / Vegan friendly",
+      "description": "Crunchy, golden-brown deep-fried fritters made by dipping sliced onions, potatoes, cabbage, or paneer into spiced chickpea flour (besan) batter.",
+      "cultural_significance": "The perennial companion to a rainy afternoon or roadside evening tea break across Nepal.",
+      "key_ingredients": ["Chickpea flour (Besan)", "Sliced onions", "Potatoes", "Ajwain (Jowano)", "Green chilies", "Turmeric", "Mustard oil"],
+      "recipe_summary": "Coarsely mixed vegetable and seasoned besan batter is spooned in bite-sized clumps into hot mustard oil and deep-fried until crisp and golden brown.",
+      "suggested_accompaniments": "Fiery tomato-coriander chutney and steaming hot glass of Masala Chiya."
+    },
+    "jeri": {
+      "id": "jeri",
+      "name": "Jeri (Jalebi)",
+      "nepali_name": "जेरी",
+      "category": "Traditional Sweet / Confectionery",
+      "origin": "Historic sweetmakers of Kathmandu Valley & Pan-Nepal",
+      "dietary": "Vegetarian",
+      "description": "Crisp, spiraled pretzel-shaped fried batter soaked in aromatic cardamom and saffron-infused warm sugar syrup.",
+      "cultural_significance": "Celebratory morning staple; famously folded inside warm soft Swari bread ('Jeri-Swari') for auspicious festival breakfasts in Kathmandu.",
+      "key_ingredients": ["Fermented refined flour batter", "Sugar syrup", "Saffron strands", "Cardamom powder", "Pure ghee/oil"],
+      "recipe_summary": "Fermented batter is poured through a cloth nozzle into hot ghee in concentric spiral coils, fried until crisp, then soaked in warm aromatic sugar syrup.",
+      "suggested_accompaniments": "Warm Swari flatbread or fresh thick curd (Dahi)."
+    },
+    "yomari": {
+      "id": "yomari",
+      "name": "Yomari",
+      "nepali_name": "योमरी",
+      "category": "Festive Delicacy / Sweet Dumpling",
+      "origin": "Newar community of Kathmandu Valley",
+      "dietary": "Vegetarian",
+      "description": "Fig-shaped steamed rice flour dumpling filled with sweet molten molasses (Chaku) and sesame seeds, or savory lentil paste.",
+      "cultural_significance": "Centerpiece of Yomari Punhi, celebrating the post-harvest full moon and bestowing prosperity and blessings upon families.",
+      "key_ingredients": ["Taichin rice flour", "Chaku (concentrated jaggery molasses)", "Roasted sesame seeds", "Coconut shreds"],
+      "recipe_summary": "Warm dough is sculpted with fingers into pointed conical figures, hollowed out, packed with warm chaku-sesame filling, pinched closed, and steamed.",
+      "suggested_accompaniments": "Eaten warm when the inner chaku is delightfully molten."
     },
     "chatpate": {
       "id": "chatpate",
@@ -186,45 +141,6 @@
       "key_ingredients": ["Puffed rice (Murai)", "Crushed dry noodles", "Boiled potatoes", "Soaked chickpeas", "Chopped onions & tomatoes", "Raw mustard oil", "Fresh lime juice", "Spicy chili-cumin spice blend"],
       "recipe_summary": "All ingredients are rapidly hand-tossed inside a repurposed metal tin with a spoon and served in newspaper cones with bamboo picks.",
       "suggested_accompaniments": "Enjoyed instantly on foot with friends!"
-    },
-    "chow_mein": {
-      "id": "chow_mein",
-      "name": "Nepali Chow Mein",
-      "nepali_name": "चाउमिन",
-      "category": "Noodle Stir-Fry / Street Cuisine",
-      "origin": "Nepali adaptation of Himalayan/Chinese noodles",
-      "dietary": "Vegetarian or Non-Vegetarian",
-      "description": "Wok-tossed egg or flour noodles stir-fried with julienned cabbage, carrots, bell peppers, sliced chicken or buff, dressed in a distinctive dark soy and cumin-coriander spice kick.",
-      "cultural_significance": "The perennial cafeteria and roadside diner classic across every city and village throughout Nepal.",
-      "key_ingredients": ["Boiled wheat noodles", "Shredded cabbage & carrots", "Sliced onions", "Dark soy sauce", "Vinegar", "Chili paste", "Nepali curry blend"],
-      "recipe_summary": "A smoking hot wok is fired with oil, garlic, and sliced meat or vegetables, noodles are introduced, tossed vigorously with seasonings until fragrant and glazed.",
-      "suggested_accompaniments": "Drizzled with house-made chili tomato ketchup and fresh pickled chillies."
-    },
-    "thukpa": {
-      "id": "thukpa",
-      "name": "Thukpa",
-      "nepali_name": "थुक्पा",
-      "category": "Himalayan Noodle Soup",
-      "origin": "Himalayan communities / Sherpa & Tibetan culture in Nepal",
-      "dietary": "Vegetarian or Meat variants",
-      "description": "Steaming, restorative noodle soup packed with hand-pulled or long wheat noodles, vegetables, sliced meat, and a deeply aromatic spice-infused broth.",
-      "cultural_significance": "A beloved winter food providing warmth and restorative nourishment during cold Himalayan months.",
-      "key_ingredients": ["Egg/wheat noodles", "Rich bone or vegetable broth", "Garlic", "Ginger", "Coriander", "Cumin", "Shredded greens"],
-      "recipe_summary": "A fragrant spiced soup stock is simmered with vegetables and protein, then poured piping hot over freshly blanched noodles in deep ceramic bowls.",
-      "suggested_accompaniments": "Served with spicy garlic-chili oil paste on the side."
-    },
-    "chiya": {
-      "id": "chiya",
-      "name": "Masala Chiya",
-      "nepali_name": "मसाला चिया",
-      "category": "Traditional Beverage",
-      "origin": "Pan-Nepal",
-      "dietary": "Vegetarian",
-      "description": "Rich, aromatic spiced milk tea brewed with full-bodied local CTC tea leaves (Ilam), fresh milk, and fragrant whole spices.",
-      "cultural_significance": "The heart of Nepali hospitality and social culture; no guest enters a home without being greeted with a steaming glass of Chiya.",
-      "key_ingredients": ["Nepali orthodox/CTC black tea", "Whole milk", "Water", "Crushed green cardamom", "Cinnamon bark", "Fresh ginger", "Cloves", "Sugar"],
-      "recipe_summary": "Water and milk are brought to a roll with crushed spices and ginger, black tea is added and slow-boiled until deep amber, strained into glasses.",
-      "suggested_accompaniments": "Paired with morning Selroti, bakery biscuits, or Malpuwa."
     }
   }
 }

@@ -34,7 +34,7 @@ new_project/
 ├── backend/
 │   ├── app.py                # FastAPI server (Endpoints: /api/predict, /api/models, /api/dishes)
 │   ├── models_handler.py     # Inference manager supporting PyTorch, ONNX, and features
-│   ├── dishes_data.json      # Comprehensive metadata database for 16 Nepali dishes
+│   ├── dishes_data.json      # Comprehensive metadata database for 10 core Nepali dishes
 │   ├── requirements.txt      # Python dependencies
 │   ├── Procfile              # Heroku deployment configuration
 │   └── Dockerfile            # Container deployment (DigitalOcean / Render / HuggingFace)

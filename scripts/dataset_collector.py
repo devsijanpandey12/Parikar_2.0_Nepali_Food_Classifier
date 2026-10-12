@@ -14,30 +14,31 @@ import requests
 from PIL import Image
 import io
 
-# Default classes
+# Default classes (10 Core Nepali Dishes)
 NEPALI_FOOD_CLASSES = [
-    "momo", "selroti", "dalbhat", "dhido", "gundruk", "yomari",
-    "panipuri", "sekuwa", "juju_dhau", "samosa", "kwati", "bara",
-    "chatpate", "chow_mein", "thukpa", "chiya"
+    "momo",
+    "selroti",
+    "dalbhat",
+    "panipuri",
+    "samosa",
+    "chiya",
+    "pakauda",
+    "jeri",
+    "yomari",
+    "chatpate"
 ]
 
 SEARCH_QUERIES = {
-    "momo": ["nepali momo traditional", "steamed momo kathmandu", "authentic buff momo achar"],
-    "selroti": ["nepali selroti traditional", "sel roti tihar festival", "crispy sweet sel roti"],
-    "dalbhat": ["nepali dal bhat tarkari thali", "authentic nepali khana set", "dal bhat power"],
-    "dhido": ["nepali dhido kodo phapar", "traditional dhido gundruk", "nepali millet dhido"],
-    "gundruk": ["nepali gundruk jhol soup", "fermented gundruk curry", "traditional gundruk bhatmas"],
-    "yomari": ["newari yomari festival", "yomari chaku sweet dumpling", "steamed yomari punhi"],
-    "panipuri": ["nepali panipuri street food", "spicy golgappa panipuri nepal"],
-    "sekuwa": ["nepali sekuwa grilled meat", "dharan sekuwa charcoal barbecue", "spicy buff sekuwa"],
-    "juju_dhau": ["bhaktapur juju dhau curd", "king of curd juju dhau clay pot"],
-    "samosa": ["nepali samosa tarkari street", "crispy potato samosa chana"],
-    "kwati": ["nepali kwati sprouted bean soup", "janai purnima kwati stew"],
-    "bara": ["newari wo bara lentil patty", "crispy black gram bara nepal"],
-    "chatpate": ["nepali chatpate street food", "spicy wai wai chatpate"],
-    "chow_mein": ["nepali chow mein street noodles", "buff chowmein spicy nepal"],
-    "thukpa": ["himalayan thukpa noodle soup", "sherpa thukpa vegetable meat"],
-    "chiya": ["nepali masala chiya milk tea", "ilam tea milk spices glass"]
+    "momo": ["nepali momo traditional", "steamed momo kathmandu", "authentic buff momo achar", "kothey momo nepal"],
+    "selroti": ["nepali selroti traditional", "sel roti tihar festival", "crispy sweet sel roti", "nepali selroti tea"],
+    "dalbhat": ["nepali dal bhat tarkari thali", "authentic nepali khana set", "dal bhat power 24 hour", "himalayan dal bhat"],
+    "panipuri": ["nepali panipuri street food", "spicy golgappa panipuri nepal", "kathmandu panipuri street stall"],
+    "samosa": ["nepali samosa tarkari street", "crispy potato samosa chana", "nepali tea samosa stall"],
+    "chiya": ["nepali masala chiya milk tea", "ilam tea milk spices glass", "traditional nepali milk tea street"],
+    "pakauda": ["nepali pakauda street food", "crispy onion potato pakoda nepal", "rainy day nepali pakauda"],
+    "jeri": ["nepali jeri swari sweet", "kathmandu mithai jeri jalebi", "authentic nepali jeri festival"],
+    "yomari": ["newari yomari festival", "yomari chaku sweet dumpling", "steamed yomari punhi kathmandu"],
+    "chatpate": ["nepali chatpate street food", "spicy wai wai chatpate stall", "authentic nepali spicy chatpate"]
 }
 
 class DatasetCollector:
