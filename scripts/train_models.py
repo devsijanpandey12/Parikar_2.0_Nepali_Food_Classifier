@@ -20,6 +20,10 @@ from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 import timm
 
+# Make sibling scripts importable regardless of how this file is launched
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from onnx_registry import register_onnx
+
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
@@ -216,7 +220,8 @@ def train_single_model(
         print(
             f"Epoch [{epoch:02d}/{epochs:02d}] {epoch_sec}s | "
             f"Train Loss: {train_loss:.4f} Acc: {train_acc*100:5.2f}% | "
-            f"Val Loss: {val_loss:.4f} Acc: {val_acc*100:5.2f}% {best_flag}"
+            f"Val Loss: {val_loss:.4f} Acc: {val_acc*100:5.2f}% {best_flag}",
+            flush=True
         )
 
         history.append({
@@ -257,6 +262,24 @@ def train_single_model(
     
     onnx_size_mb = round(onnx_file.stat().st_size / (1024 * 1024), 2)
     print(f"ONNX Model saved to: {onnx_file} ({onnx_size_mb} MB)")
+
+    # Keep a versioned copy in models_onnx/ and log this run (never overwritten on retrain)
+    register_onnx(
+        onnx_src=onnx_file,
+        model_key=model_key,
+        display_name=arch_info["display_name"],
+        timm_name=arch_info["timm_name"],
+        best_val_acc=round(best_acc * 100, 2),
+        final_train_acc=history[-1]["train_acc"],
+        latency_ms=latency_ms,
+        training_time_sec=total_training_sec,
+        epochs=epochs,
+        batch_size=batch_size,
+        lr=lr,
+        train_samples=len(train_dataset),
+        val_samples=len(val_dataset),
+        classes=classes,
+    )
 
     result_summary = {
         "model_key": model_key,
@@ -367,7 +390,14 @@ def main():
     args = parser.parse_args()
 
     models_to_train = list(ARCHITECTURES.keys()) if args.model == "all" else [args.model]
+    metrics_path = Path("docs/training_metrics.json")
     all_results = {}
+    if metrics_path.exists():
+        try:
+            with open(metrics_path, "r", encoding="utf-8") as f:
+                all_results = json.load(f)
+        except Exception:
+            all_results = {}
 
     for m_key in models_to_train:
         result = train_single_model(
@@ -379,14 +409,12 @@ def main():
             lr=args.lr
         )
         all_results[m_key] = result
+        
+        # Incremental save and doc update
+        with open(metrics_path, "w", encoding="utf-8") as f:
+            json.dump(all_results, f, indent=2)
+        update_training_report(all_results)
 
-    # Save metrics JSON
-    metrics_path = Path("docs/training_metrics.json")
-    with open(metrics_path, "w", encoding="utf-8") as f:
-        json.dump(all_results, f, indent=2)
-
-    # Update markdown documentation
-    update_training_report(all_results)
     print("\nAll model training, ONNX exports, and report documentation completed successfully!")
 
 if __name__ == "__main__":

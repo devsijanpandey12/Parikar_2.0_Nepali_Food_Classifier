@@ -79,16 +79,13 @@ async def predict_food(
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Prediction error: {str(e)}")
 
-# Mount static frontend files if directory exists
+# Serve static frontend files if directory exists.
+# index.html references style.css / app.js / assets/* with root-relative paths, so the
+# frontend must be mounted at "/". It is mounted last so the /api and /health routes
+# above keep priority. "/static" is kept for backward compatibility.
 if FRONTEND_DIR.exists():
     app.mount("/static", StaticFiles(directory=str(FRONTEND_DIR)), name="static")
-
-    @app.get("/")
-    async def serve_index():
-        index_file = FRONTEND_DIR / "index.html"
-        if index_file.exists():
-            return FileResponse(str(index_file))
-        return {"message": "Parikar 2.0 API is running. Frontend index.html not found."}
+    app.mount("/", StaticFiles(directory=str(FRONTEND_DIR), html=True), name="frontend")
 
 if __name__ == "__main__":
     import uvicorn

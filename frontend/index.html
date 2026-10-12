@@ -3,25 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Parikar 2.0 | Nepali Food Classifier & Culinary Intelligence</title>
-  <meta name="description" content="AI-powered recognition for 16 authentic Nepali cuisines using state-of-the-art vision models: MobileNetV4, ConvNeXt-V2, and EfficientNetV2.">
-  <meta name="keywords" content="Nepali food classifier, Momo, Selroti, Dalbhat, Dhido, Gundruk, Yomari, Parikar AI, Machine Learning Nepal">
-  
+  <title>Parikar 2.0 | Nepali Food Classifier &amp; Culinary Intelligence</title>
+  <meta name="description" content="AI-powered recognition for 10 authentic Nepali dishes using modern vision models: MobileNetV4, ConvNeXt-V2, and EfficientNet-B0. Upload a photo or use your camera and explore each dish's culture.">
+  <meta name="keywords" content="Nepali food classifier, Momo, Selroti, Dalbhat, Yomari, Chatpate, Chiya, Parikar AI, Machine Learning Nepal">
+  <meta name="theme-color" content="#06080f">
+
   <!-- Google Fonts: Outfit, Plus Jakarta Sans, Noto Sans Devanagari -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
+  <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
 </head>
 <body>
 
+  <!-- Inline SVG icon set -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4m0 0L7 9m5-5 5 5M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></symbol>
+      <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8a2 2 0 0 1 2-2h1.5l1-1.5h7l1 1.5H18a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8z"/><circle cx="12" cy="12.5" r="3.5"/></symbol>
+      <symbol id="i-flip" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 13.5-5.8L20 8m0-4v4h-4M20 12a8 8 0 0 1-13.5 5.8L4 16m0 4v-4h4"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+      <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- Ambient backdrop -->
+  <div class="aurora" aria-hidden="true"><span class="orb-1"></span><span class="orb-2"></span><span class="orb-3"></span></div>
+  <div class="grid-fade" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="flag-strip" aria-hidden="true"></div>
+
   <!-- Top Navigation Bar -->
   <header class="navbar" id="main-header">
-    <a href="#" class="nav-brand" id="nav-brand-logo">
+    <a href="#" class="nav-brand" id="nav-brand-logo" aria-label="Parikar 2.0 home">
       <div class="brand-icon">🥟</div>
       <div class="brand-text">
-        <h1>Parikar <span class="brand-badge">2.0</span></h1>
+        <span class="brand-name">Parikar <span class="brand-badge">2.0</span></span>
         <span class="brand-subtitle">परिकार • Nepali Culinary AI</span>
       </div>
     </a>
@@ -29,7 +50,7 @@
     <nav aria-label="Main Navigation">
       <ul class="nav-links">
         <li><a href="#classifier" class="active" id="nav-link-classifier">Classifier</a></li>
-        <li><a href="#benchmarks" id="nav-link-benchmarks">Models & Specs</a></li>
+        <li><a href="#benchmarks" id="nav-link-benchmarks">Models &amp; Specs</a></li>
         <li><a href="#catalog" id="nav-link-catalog">Dishes Guide</a></li>
       </ul>
     </nav>
@@ -44,26 +65,59 @@
 
   <!-- Hero Section -->
   <section class="hero" id="hero-section">
+    <svg class="hero-mountains" viewBox="0 0 1440 240" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="mtn-back" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#ff3d68" stop-opacity="0.28"/>
+          <stop offset="1" stop-color="#ff3d68" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="mtn-front" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#ffb21e" stop-opacity="0.24"/>
+          <stop offset="1" stop-color="#ffb21e" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <path d="M0 240 L0 150 L130 70 L210 120 L340 20 L470 125 L560 85 L700 150 L820 55 L940 130 L1060 40 L1190 125 L1300 80 L1440 140 L1440 240 Z" fill="url(#mtn-back)"/>
+      <path d="M0 240 L0 190 L100 140 L200 180 L330 105 L450 175 L580 130 L720 190 L860 120 L990 185 L1110 135 L1250 190 L1360 150 L1440 185 L1440 240 Z" fill="url(#mtn-front)"/>
+    </svg>
+
     <div class="hero-pill" id="hero-pill-badge">
-      <span>🏔️ Heritage Meets Computer Vision 2026</span>
+      <span class="pill-new">2026</span>
+      <span>🏔️ Heritage meets computer vision</span>
     </div>
-    <h2>Authentic Nepali Food Recognition,<br>Powered by Vision AI</h2>
-    <p>
-      Classify 10 authentic traditional dishes in milliseconds. Select modern vision architectures, upload a photo or snap with your camera, and discover deep cultural culinary lore.
+
+    <h1>Recognise Nepali food<br>in a blink, powered by <span class="hl">Vision AI</span></h1>
+
+    <p class="hero-lead">
+      Classify 10 authentic traditional dishes in milliseconds. Pick a modern vision architecture, upload a photo or snap one with your camera, and uncover the culture behind every bite.
     </p>
+
+    <div class="hero-cta">
+      <a href="#classifier" class="btn-primary" id="cta-try-classifier">
+        <span>Try the classifier</span>
+        <svg class="icon"><use href="#i-arrow"/></svg>
+      </a>
+      <a href="#catalog" class="btn-ghost" id="cta-explore-dishes">Explore the dishes</a>
+    </div>
+
+    <div class="hero-stats" id="hero-stats">
+      <div class="stat"><span class="stat-num">10</span><span class="stat-label">Authentic dishes</span></div>
+      <div class="stat"><span class="stat-num">10K</span><span class="stat-label">Training images</span></div>
+      <div class="stat"><span class="stat-num">3</span><span class="stat-label">Vision backbones</span></div>
+      <div class="stat"><span class="stat-num">Live</span><span class="stat-label">Camera &amp; upload</span></div>
+    </div>
   </section>
 
   <!-- Interactive Classifier Section -->
-  <main class="classifier-section" id="classifier">
+  <main class="classifier-section reveal" id="classifier">
     <div class="classifier-card">
-      
+
       <!-- Model Toggle Bar -->
       <div class="model-control-bar" id="model-control-bar">
         <div class="model-title-box">
-          <span style="font-size: 1.3rem;">🧠</span>
+          <div class="model-title-icon">🧠</div>
           <div>
-            <h3>Active Vision Backbone</h3>
-            <span style="font-size: 0.8rem; color: var(--text-muted);">Switch architecture to test latency & accuracy</span>
+            <h2>Active Vision Backbone</h2>
+            <span class="model-title-sub">Switch architecture to compare speed and accuracy</span>
           </div>
         </div>
 
@@ -85,17 +139,17 @@
 
       <!-- Workspace: Input Panel & Results Panel -->
       <div class="workspace-grid">
-        
+
         <!-- Left Column: Input Panel -->
         <div class="input-panel">
-          
+
           <!-- Mode Tabs -->
           <div class="tabs-nav" role="tablist">
             <button type="button" class="tab-btn active" data-tab="upload" id="tab-btn-upload" role="tab">
-              <span>📁 Upload / Drop Photo</span>
+              <span><svg class="icon"><use href="#i-upload"/></svg> Upload / Drop</span>
             </button>
             <button type="button" class="tab-btn" data-tab="camera" id="tab-btn-camera" role="tab">
-              <span>📷 Live Camera</span>
+              <span><svg class="icon"><use href="#i-camera"/></svg> Live Camera</span>
             </button>
           </div>
 
@@ -103,11 +157,12 @@
           <div id="dropzone-wrapper">
             <div class="dropzone-container" id="dropzone">
               <input type="file" id="file-input" class="file-input-hidden" accept="image/*" aria-label="Upload food photo">
-              
+
               <div class="dropzone-icon">🍲</div>
               <div class="dropzone-title">Drop your Nepali food photo here</div>
-              <div class="dropzone-subtitle">Supports JPEG, PNG, WEBP • Or paste from clipboard (Ctrl+V)</div>
+              <div class="dropzone-subtitle">JPEG, PNG or WEBP. You can also paste from the clipboard with Ctrl+V.</div>
               <button type="button" class="btn-browse" id="btn-browse-photo">
+                <svg class="icon"><use href="#i-upload"/></svg>
                 <span>Browse Photo</span>
               </button>
 
@@ -116,7 +171,8 @@
                 <img src="" alt="Selected Nepali Food" id="preview-img" class="preview-img">
                 <div class="preview-actions">
                   <button type="button" class="btn-overlay" id="btn-remove-preview">
-                    <span>✕ Clear Image</span>
+                    <svg class="icon"><use href="#i-close"/></svg>
+                    <span>Clear Image</span>
                   </button>
                 </div>
               </div>
@@ -128,7 +184,7 @@
             <video id="camera-video" autoplay playsinline muted></video>
             <div class="camera-controls">
               <button type="button" class="btn-cam-tool" id="btn-flip-cam" title="Flip Camera" aria-label="Flip Camera">
-                🔄
+                <svg class="icon"><use href="#i-flip"/></svg>
               </button>
               <button type="button" class="btn-capture" id="btn-capture" title="Take Photo" aria-label="Capture Photo"></button>
             </div>
@@ -136,38 +192,18 @@
 
           <!-- Quick Test Samples Bar -->
           <div class="samples-bar" id="samples-bar">
-            <span class="samples-label">⚡ Quick 1-Click Test Samples:</span>
+            <span class="samples-label"><svg class="icon"><use href="#i-bolt"/></svg> Quick one-click test samples</span>
             <div class="sample-chips">
-              <button type="button" class="chip-btn" data-dish="momo" data-sample="assets/momo.jpg" id="sample-momo">
-                <span>🥟 Momo</span>
-              </button>
-              <button type="button" class="chip-btn" data-dish="selroti" data-sample="assets/selroti.jpg" id="sample-selroti">
-                <span>🍩 Selroti</span>
-              </button>
-              <button type="button" class="chip-btn" data-dish="dalbhat" data-sample="assets/dalbhat.jpg" id="sample-dalbhat">
-                <span>🍛 Dal Bhat</span>
-              </button>
-              <button type="button" class="chip-btn" data-dish="panipuri" id="sample-panipuri">
-                <span>🥣 Panipuri</span>
-              </button>
-              <button type="button" class="chip-btn" data-dish="samosa" id="sample-samosa">
-                <span>🔺 Samosa</span>
-              </button>
-              <button type="button" class="chip-btn" data-dish="chiya" id="sample-chiya">
-                <span>☕ Chiya</span>
-              </button>
-              <button type="button" class="chip-btn" data-dish="pakauda" id="sample-pakauda">
-                <span>🧅 Pakauda</span>
-              </button>
-              <button type="button" class="chip-btn" data-dish="jeri" id="sample-jeri">
-                <span>🥨 Jeri</span>
-              </button>
-              <button type="button" class="chip-btn" data-dish="yomari" data-sample="assets/yomari.jpg" id="sample-yomari">
-                <span>🍯 Yomari</span>
-              </button>
-              <button type="button" class="chip-btn" data-dish="chatpate" id="sample-chatpate">
-                <span>🌶️ Chatpate</span>
-              </button>
+              <button type="button" class="chip-btn" data-dish="momo" data-sample="assets/momo.jpg" id="sample-momo"><span>🥟 Momo</span></button>
+              <button type="button" class="chip-btn" data-dish="selroti" data-sample="assets/selroti.jpg" id="sample-selroti"><span>🍩 Selroti</span></button>
+              <button type="button" class="chip-btn" data-dish="dalbhat" data-sample="assets/dalbhat.jpg" id="sample-dalbhat"><span>🍛 Dal Bhat</span></button>
+              <button type="button" class="chip-btn" data-dish="panipuri" id="sample-panipuri"><span>🥣 Panipuri</span></button>
+              <button type="button" class="chip-btn" data-dish="samosa" id="sample-samosa"><span>🔺 Samosa</span></button>
+              <button type="button" class="chip-btn" data-dish="chiya" id="sample-chiya"><span>☕ Chiya</span></button>
+              <button type="button" class="chip-btn" data-dish="pakauda" id="sample-pakauda"><span>🧅 Pakauda</span></button>
+              <button type="button" class="chip-btn" data-dish="jeri" id="sample-jeri"><span>🥨 Jeri</span></button>
+              <button type="button" class="chip-btn" data-dish="yomari" data-sample="assets/yomari.jpg" id="sample-yomari"><span>🍯 Yomari</span></button>
+              <button type="button" class="chip-btn" data-dish="chatpate" id="sample-chatpate"><span>🌶️ Chatpate</span></button>
             </div>
           </div>
 
@@ -175,37 +211,37 @@
 
         <!-- Right Column: Results Dashboard -->
         <div class="results-panel">
-          
+
           <!-- Empty Waiting State -->
           <div class="empty-state" id="empty-state">
             <div class="empty-icon">✨</div>
-            <div class="empty-title">Ready for Classification</div>
+            <div class="empty-title">Ready for classification</div>
             <p class="empty-desc">
-              Upload a picture of any Nepali dish or choose a quick sample to see neural predictions, confidence, and cultural history.
+              Upload a picture of any Nepali dish or choose a quick sample to see predictions, confidence and cultural history.
             </p>
           </div>
 
           <!-- Active Prediction Card -->
           <div class="result-card" id="result-card">
-            
+
             <!-- Top Hero Banner -->
             <div class="prediction-hero">
               <div class="prediction-meta-top">
                 <span class="dish-category-badge" id="res-category">Traditional Dish</span>
                 <span class="latency-badge">
-                  <span>⚡</span>
+                  <svg class="icon"><use href="#i-bolt"/></svg>
                   <span id="res-latency">18.4 ms</span>
                 </span>
               </div>
 
               <div class="dish-main-names">
-                <h3 class="dish-main-name" id="res-name">Momo</h3>
+                <h2 class="dish-main-name" id="res-name">Momo</h2>
                 <div class="dish-nepali-name" id="res-nepali">मोमो</div>
               </div>
 
               <div class="confidence-bar-wrap">
                 <div class="confidence-label-row">
-                  <span>Neural Confidence</span>
+                  <span>Model confidence</span>
                   <span id="res-conf-text" style="color: var(--accent-saffron);">96.8%</span>
                 </div>
                 <div class="confidence-progress-track">
@@ -216,7 +252,7 @@
 
             <!-- Top 3 Probability Breakdown -->
             <div class="top-candidates-box">
-              <div class="section-mini-title">Top-3 Model Ranking</div>
+              <div class="section-mini-title">Top-3 model ranking</div>
               <div class="candidates-list" id="res-candidates">
                 <!-- Dynamically populated by app.js -->
               </div>
@@ -234,7 +270,7 @@
               </div>
 
               <div class="lore-section">
-                <span class="lore-label">Cultural Heritage & Significance</span>
+                <span class="lore-label">Cultural Heritage &amp; Significance</span>
                 <p class="lore-text" id="res-culture"></p>
               </div>
 
@@ -267,23 +303,22 @@
 
   <!-- Model Benchmarks Section -->
   <section class="benchmark-section" id="benchmarks">
-    <div class="section-header">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Under the hood</span>
       <h2>Model Architecture Benchmarks</h2>
-      <p>Comparing next-generation vision backbones for Nepali cuisine classification in 2026</p>
+      <p>Three modern vision backbones, fine-tuned for Nepali cuisine classification.</p>
     </div>
 
     <div class="models-grid">
-      
+
       <!-- MobileNetV4 Card -->
-      <div class="model-card">
+      <div class="model-card reveal d1" id="card-mobilenet">
         <div class="model-card-header">
           <div>
             <h3 class="model-card-title">MobileNetV4-Conv</h3>
             <span class="model-card-dev">Google Research (2024)</span>
           </div>
-          <span class="brand-badge" style="background: rgba(16, 185, 129, 0.2); color: var(--accent-emerald); border-color: rgba(16, 185, 129, 0.3);">
-            Fastest
-          </span>
+          <span class="brand-badge is-emerald">Fastest</span>
         </div>
         <p class="model-card-desc">
           Universal Inverted Bottleneck (UIB) design optimized for sub-15ms edge inference on mobile browsers and micro-containers.
@@ -305,7 +340,7 @@
       </div>
 
       <!-- ConvNeXt-V2 Card -->
-      <div class="model-card" style="border-color: var(--border-active); box-shadow: var(--shadow-lg);">
+      <div class="model-card featured reveal d2" id="card-convnext">
         <div class="model-card-header">
           <div>
             <h3 class="model-card-title">ConvNeXt-V2-Nano</h3>
@@ -333,15 +368,13 @@
       </div>
 
       <!-- EfficientNet-B0 Card -->
-      <div class="model-card">
+      <div class="model-card reveal d3" id="card-efficientnet">
         <div class="model-card-header">
           <div>
             <h3 class="model-card-title">EfficientNet-B0</h3>
             <span class="model-card-dev">Google Brain</span>
           </div>
-          <span class="brand-badge" style="background: rgba(245, 158, 11, 0.2); color: var(--accent-saffron); border-color: rgba(245, 158, 11, 0.3);">
-            Compound Scaling
-          </span>
+          <span class="brand-badge is-saffron">Compound Scaling</span>
         </div>
         <p class="model-card-desc">
           Balanced convolutional network utilizing principled compound coefficient scaling across depth, width, and resolution for reliable feature extraction.
@@ -367,14 +400,15 @@
 
   <!-- Encyclopedia Dishes Grid -->
   <section class="catalog-section" id="catalog">
-    <div class="section-header">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Culinary encyclopedia</span>
       <h2>Nepali Culinary Encyclopedia</h2>
-      <p>Discover 10 authentic dishes recognized by Parikar AI</p>
+      <p>Discover the 10 authentic dishes recognised by Parikar AI.</p>
     </div>
 
-    <div class="catalog-search-bar">
-      <span class="search-icon">🔍</span>
-      <input type="text" id="catalog-search" class="search-input" placeholder="Search dish by English or Nepali name (e.g. Momo, धिँडो)..." aria-label="Search dishes">
+    <div class="catalog-search-bar reveal">
+      <input type="text" id="catalog-search" class="search-input" placeholder="Search by English or Nepali name (e.g. Momo, मोमो)..." aria-label="Search dishes">
+      <span class="search-icon"><svg class="icon"><use href="#i-search"/></svg></span>
     </div>
 
     <div class="dishes-grid" id="dishes-grid">
@@ -385,10 +419,11 @@
   <!-- Footer -->
   <footer class="footer" id="main-footer">
     <div class="footer-content">
+      <div class="footer-logo"><span class="brand-icon" style="width:38px;height:38px;font-size:1.15rem;">🥟</span> Parikar 2.0</div>
       <div class="student-pack-badges">
         <span class="badge-item">🎓 GitHub Student Developer Pack</span>
-        <span class="badge-item">🚀 Heroku Cloud API ($13/mo)</span>
-        <span class="badge-item">🌐 GitHub Pages & Vercel Free Tier</span>
+        <span class="badge-item">🚀 Heroku Cloud API</span>
+        <span class="badge-item">🌐 GitHub Pages &amp; Vercel Free Tier</span>
         <span class="badge-item">💎 Free .me Domain (Namecheap)</span>
       </div>
       <p class="footer-copy">

@@ -11,6 +11,11 @@ from pathlib import Path
 from PIL import Image
 from bing_image_downloader import downloader
 
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+if hasattr(sys.stderr, 'reconfigure'):
+    sys.stderr.reconfigure(encoding='utf-8')
+
 # 10 Agreed Nepali Food Classes
 CLASSES_QUERIES = {
     "momo": [

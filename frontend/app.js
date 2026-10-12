@@ -140,16 +140,72 @@ const CLIENT_DISHES_DB = {
   }
 };
 
+// Emoji avatars for each dish (used by catalog tiles)
+const DISH_EMOJI = {
+  momo: '🥟', selroti: '🍩', dalbhat: '🍛', panipuri: '🥣', samosa: '🔺',
+  chiya: '☕', pakauda: '🧅', jeri: '🥨', yomari: '🍯', chatpate: '🌶️'
+};
+
+const RANK_MEDALS = ['🥇', '🥈', '🥉'];
+
+// Default empty-state markup, restored when the user clears an image
+let EMPTY_STATE_HTML = '';
+
 // Initialize Application
 document.addEventListener('DOMContentLoaded', () => {
+  const emptyEl = document.getElementById('empty-state');
+  if (emptyEl) EMPTY_STATE_HTML = emptyEl.innerHTML;
+
   initModelSelector();
   initTabs();
   initDropzone();
   initCamera();
   initQuickSamples();
   initCatalog();
+  initScrollEffects();
   fetchInitialMetadata();
 });
+
+// Scroll polish: reveal-on-scroll, navbar state, active nav link
+function initScrollEffects() {
+  const header = document.getElementById('main-header');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sections = ['classifier', 'benchmarks', 'catalog']
+    .map(id => document.getElementById(id))
+    .filter(Boolean);
+
+  // Reveal on scroll (falls back to visible if IntersectionObserver is unavailable)
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+
+  function onScroll() {
+    header.classList.toggle('scrolled', window.scrollY > 24);
+
+    const probe = window.scrollY + window.innerHeight * 0.35;
+    let currentId = sections[0] ? sections[0].id : '';
+    sections.forEach(sec => {
+      if (sec.offsetTop <= probe) currentId = sec.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === `#${currentId}`);
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
 
 // Fetch backend metadata if online
 async function fetchInitialMetadata() {
@@ -296,6 +352,8 @@ function resetPreview() {
   previewImg.src = '';
   previewContainer.classList.remove('active');
   
+  // Restore the original empty-state content (it may be showing the loading spinner)
+  if (EMPTY_STATE_HTML) emptyState.innerHTML = EMPTY_STATE_HTML;
   emptyState.style.display = 'flex';
   resultCard.classList.remove('active');
 }
@@ -478,10 +536,12 @@ async function classifyImage(file) {
   const resultCard = document.getElementById('result-card');
 
   // Show loading indicator
+  const activeBtn = document.querySelector(`.model-btn[data-model="${state.currentModel}"]`);
+  const modelLabel = activeBtn ? activeBtn.querySelector('span').textContent.trim() : state.currentModel;
   emptyState.innerHTML = `
-    <div class="pulse-dot" style="width: 24px; height: 24px; margin-bottom: 1rem;"></div>
-    <div class="empty-title">Analyzing Dish with AI...</div>
-    <p class="empty-desc">Extracting culinary features using ${state.currentModel.toUpperCase()}...</p>
+    <div class="spinner"></div>
+    <div class="empty-title">Analyzing dish with AI...</div>
+    <p class="empty-desc">Extracting culinary features using ${modelLabel}...</p>
   `;
   emptyState.style.display = 'flex';
   resultCard.classList.remove('active');
@@ -601,9 +661,11 @@ function renderPredictionResult(data) {
   // Confidence Bar
   const confPct = top.confidence_percent || 95.0;
   document.getElementById('res-conf-text').textContent = `${confPct}%`;
+  const confBar = document.getElementById('res-conf-bar');
+  confBar.style.width = '0%'; // reset so the fill animation replays on every prediction
   setTimeout(() => {
-    document.getElementById('res-conf-bar').style.width = `${confPct}%`;
-  }, 50);
+    confBar.style.width = `${confPct}%`;
+  }, 80);
 
   // Top 3 Candidates
   const candidatesContainer = document.getElementById('res-candidates');
@@ -612,7 +674,7 @@ function renderPredictionResult(data) {
     const item = document.createElement('div');
     item.className = 'candidate-item';
     item.innerHTML = `
-      <span class="candidate-rank">#${idx + 1}</span>
+      <span class="candidate-rank">${RANK_MEDALS[idx] || idx + 1}</span>
       <div class="candidate-name-bar">
         <div class="candidate-name-text">
           ${cand.label} <span style="font-family: var(--font-nepali); color: var(--accent-saffron); font-size: 0.8rem;">${cand.nepali_name || ''}</span>
@@ -681,6 +743,7 @@ function initCatalog() {
         const tile = document.createElement('div');
         tile.className = 'dish-tile';
         tile.innerHTML = `
+          <div class="dish-tile-emoji">${DISH_EMOJI[k] || '🍽️'}</div>
           <div class="dish-tile-top">
             <div>
               <div class="dish-tile-name">${dish.name}</div>
